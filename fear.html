@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When You're in fear — What Allah Says</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Noto Naskh Arabic", serif;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      animation: slowWaves 30s infinite alternate ease-in-out;
+    }
+
+    @keyframes slowWaves {
+      0% { background-position: center center; }
+      50% { background-position: left top; }
+      100% { background-position: right bottom; }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      z-index: 2;
+      margin-bottom: 20px;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .ayah {
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      border-radius: 15px;
+      max-width: 85%;
+      line-height: 2;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      z-index: 2;
+    }
+
+    .sound-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #40dbf0, #2196f3);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: white;
+      font-size: 1rem;
+      z-index: 3;
+      transition: 0.3s;
+    }
+
+    .sound-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(45deg, #4dd8e1, #1e61f3);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: rgb(28, 26, 26);
+      font-size: 1rem;
+      z-index: 3;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <button class="back-btn" id="backBtn">⬅ Back</button>
+  
+
+  <h1>When you're in fear,</h1>
+  <h1>look at this — what Allah says....</h1>
+  <div class="ayah" id="ayahText"></div>
+
+
+
+  <script>
+    const ayahs = [
+            {
+    arabic: "وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ",
+    urdu: "اور اُس دن سے ڈرو جس دن تم اللہ کی طرف لوٹائے جاؤ گے۔ (البقرة 2:281)"
+  },
+  {
+    arabic: "إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ",
+    urdu: "بے شک اللہ سے وہی لوگ ڈرتے ہیں جو علم رکھتے ہیں۔ (فاطر 35:28)"
+  },
+  {
+    arabic: "فَاتَّقُوا اللَّهَ مَا اسْتَطَعْتُمْ",
+    urdu: "پس جہاں تک ہو سکے اللہ سے ڈرو۔ (التغابن 64:16)"
+  },
+  {
+    arabic: "وَمَنْ يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اس کے لیے نکلنے کا راستہ پیدا کر دیتا ہے۔ (الطلاق 65:2)"
+  },
+  {
+    arabic: "فَاتَّقُوا اللَّهَ وَقُولُوا قَوْلًا سَدِيدًا",
+    urdu: "پس اللہ سے ڈرو اور صحیح بات کہو۔ (الأحزاب 33:70)"
+  },
+  {
+    arabic: "وَمَنْ يَتَّقِ اللَّهَ يَكْفُهُ سَيِّئَاتِهِ وَيُعْتِقْهُ مِنْ عَذَابِ النَّارِ",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اس کے برے اعمال کو چھپاتا ہے اور اسے آگ کے عذاب سے آزاد کر دیتا ہے۔ (التغابن 64:16)"
+  },
+  {
+    arabic: "إِنَّ الَّذِينَ يَخْشَوْنَ رَبَّهُم بِالْغَيْبِ لَهُم مَّغْفِرَةٌ وَأَجْرٌ كَبِيرٌ",
+    urdu: "بے شک جو لوگ اپنے رب سے غیب میں ڈرتے ہیں، ان کے لیے بخشش اور بڑا اجر ہے۔ (النبأ 78:38)"
+  },
+  {
+    arabic: "فَاتَّقُوا اللَّهَ وَأَطِيعُونِ",
+    urdu: "پس اللہ سے ڈرو اور میری اطاعت کرو۔ (آل عمران 3:132)"
+  },
+  {
+    arabic: "وَمَنْ يَتَّقِ اللَّهَ يُخْرِجْهُ مِنْ الظُّلُمَاتِ إِلَى النُّورِ",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اسے تاریکیوں سے روشنی کی طرف نکال دیتا ہے۔ (التغابن 64:16)"
+  },
+  {
+    arabic: "وَمَنْ يَتَّقِ اللَّهَ وَيَصْبِرْ فَإِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ",
+    urdu: "اور جو اللہ سے ڈرتا اور صبر کرتا ہے، اللہ نیکوکاروں کا اجر ضائع نہیں کرتا۔ (يونس 10:62)"
+  },
+
+  {
+    arabic: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ نُورًا يَهْدِيهِ",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اس کے لیے روشنی پیدا کر دیتا ہے جو اسے ہدایت دے۔ (النساء 4:174)"
+  },
+  {
+    arabic: "وَاتَّقُوا اللَّهَ وَأَطِيعُونِ لَعَلَّكُمْ تُرْحَمُونَ",
+    urdu: "اور اللہ سے ڈرو اور میری اطاعت کرو تاکہ تم پر رحم کیا جائے۔ (الأعراف 7:56)"
+  },
+  {
+    arabic: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَهُ مَفَازًا",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اس کے لیے کامیابی اور راستہ آسان کر دیتا ہے۔ (الطلاق 65:2)"
+  },
+  {
+    arabic: "فَاتَّقُوا اللَّهَ يَا أُولِي الْأَلْبَابِ",
+    urdu: "پس اے عقل والوں! اللہ سے ڈرو۔ (آل عمران 3:102)"
+  },
+  {
+    arabic: "وَاتَّقُوا اللَّهَ وَاعْلَمُوا أَنَّ اللَّهَ بِمَا تَعْمَلُونَ خَبِيرٌ",
+    urdu: "اور اللہ سے ڈرو اور جان لو کہ اللہ جو کچھ تم کرتے ہو اس کا خوب علم رکھتا ہے۔ (البقرة 2:231)"
+  },
+  {
+    arabic: "فَاصْبِرْ إِنَّ وَعْدَ اللَّهِ حَقٌّ",
+    urdu: "پس صبر کرو، بے شک اللہ کا وعدہ حق ہے۔ (الروم 30:60)"
+  },
+  {
+    arabic: "وَعَسَى أَنْ تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ",
+    urdu: "اور ممکن ہے کہ تم کسی چیز سے نفرت کرو اور وہ تمہارے لیے بہتر ہو۔ (البقرة 2:216)"
+  },
+  {
+    arabic: "لَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+    urdu: "کمزور نہ ہو اور نہ غمگین ہو، تم سب سے برتر ہو اگر تم ایمان والے ہو۔ (آل عمران 3:139)"
+  },
+  {
+    arabic: "وَمَا أَصَابَكُم مِّن مُّصِيبَةٍ فَبِمَا كَسَبَتْ أَيْدِيكُمْ",
+    urdu: "اور جو بھی تم پر مصیبت آئے، وہ تمہارے کیے گئے اعمال کی وجہ سے ہے۔ (الشورى 42:30)"
+  },
+  {
+    arabic: "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
+    urdu: "پس بے شک مشکل کے ساتھ آسانی ہے۔ (الشرح 94:6)"
+  },
+
+  {
+    arabic: "وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ فَتُوَفَّى كُلُّ نَفْسٍ مَّا كَسَبَتْ",
+    urdu: "اور اُس دن سے ڈرو جس دن تم اللہ کی طرف لوٹائے جاؤ گے، پھر ہر شخص کو اس کے اعمال کے مطابق پورا کیا جائے گا۔ (البقرة 2:281)"
+  },
+  {
+    arabic: "وَمَن يَتَّقِ اللَّهَ يُغْفَرْ لَهُ ذُنُوبَهُ",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اس کے گناہ معاف کر دیتا ہے۔ (الزمر 39:9)"
+  },
+  {
+    arabic: "وَمَنْ يَتَّقِ اللَّهَ يَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
+    urdu: "اور جو اللہ سے ڈرتا ہے، اللہ اسے ایسے ذرائع سے روزی دیتا ہے جس کا وہ حساب نہ کر سکے۔ (الطلاق 65:2-3)"
+  },
+  {
+    arabic: "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
+    urdu: "پس مجھے یاد کرو، میں تمہیں یاد رکھوں گا، اور میری شکر گزاری کرو اور کفر نہ کرو۔ (البقرة 2:152)"
+  },
+  {
+    arabic: "إِنَّمَا الْمُؤْمِنُونَ الَّذِينَ إِذَا ذُكِرَ اللَّهُ وَجِلَتْ قُلُوبُهُمْ",
+    urdu: "بے شک مومن وہ ہیں جن کے دل اللہ کا ذکر آنے پر کانپ جاتے ہیں۔ (الأنفال 8:2)"
+  }
+
+        ];
+
+    const randomAyah = ayahs[Math.floor(Math.random() * ayahs.length)];
+    document.getElementById("ayahText").innerHTML = `
+      <div style="font-size:2rem;margin-bottom:15px;">${randomAyah.arabic}</div>
+      <div style="font-size:1.2rem;">${randomAyah.urdu}</div>
+    `;
+
+    const images = [ 
+      "fear3.jpg", "fear4.jpg", "fear5.jpg", "fear6.jpg", "fear7.jpg", "fear8.jpg", "fear9.jpg"
+    ];
+
+    let bgIndex = Math.floor(Math.random() * images.length);
+    document.body.style.backgroundImage = `url(${images[bgIndex]})`;
+
+    setInterval(() => {
+      bgIndex = (bgIndex + 1) % images.length;
+      document.body.style.backgroundImage = `url(${images[bgIndex]})`;
+    }, 10000);
+
+   
+    document.getElementById("backBtn").addEventListener("click", () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qur'an & Emotions</title>
+  <link href="https://fonts.googleapis.com/css2" rel="stylesheet">
+
+  <style>
+    /* --- Background and layout --- */
+    html, body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-image: url(/black\ background\ with\ lightblack\ pattern\ \(1\).jpg);
+    }
+
+    /* --- Glowing Heading --- */
+    header h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin-top: 50px;
+      text-shadow: 0 0 10px #fff, 0 0 20px #c9c1c8, 0 0 40px #d7d1d6;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #c4bebe, 0 0 20px #dad4d9, 0 0 40px #cbc7ca;
+      }
+      to {
+        text-shadow: 0 0 20px #cdcece, 0 0 40px #c6cecf, 0 0 60px #d5d9d9;
+      }
+    }
+
+    header p {
+      color: #ccc;
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    /* --- Button container --- */
+    .emotion-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 20px;
+    }
+
+    /* --- Glowing Buttons --- */
+    .btn {
+      margin: 20px;
+      padding: 15px 40px;
+      border: 2px rgb(19, 18, 18) ridge;
+      outline: none;
+      color: #191818;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+       border-top-right-radius: 25px; /* Rounded top-right corner */
+    border-bottom-right-radius: 0px;
+     border-bottom-left-radius: 25px;
+      background: linear-gradient(45deg,);
+      background-size: 400% 400%;
+      font-size: 1.4rem;
+      font-weight: bold;
+      animation: bgGlow 10s linear infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 20px rgba(21, 20, 20, 0.3);
+    }
+
+    @keyframes bgGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .btn::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+
+    .btn::before {
+      content: "";
+      background: linear-gradient(
+        45deg,
+        #f2015b, #ED02F1, #04038D,rgb(7, 6, 6)
+      );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 600%;
+      z-index: -1;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      filter: blur(10px);
+      animation: glowing 20s linear infinite;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+      opacity: 0;
+    }
+
+    @keyframes glowing {
+      0% {background-position: 0 0;}
+      50% {background-position: 400% 0;}
+      100% {background-position: 0 0;}
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn:active:after {
+      background: transparent;
+    }
+
+    .btn:active {
+      color: #000;
+      font-weight: bold;
+    }
+
+
+
+    .credit-footer {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #686464; /* light grey */
+  background:transparent;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1> Qur'an & Emotions</h1>
+    <p>Find peace through the Qur'an — verses for every emotion</p>
+  </header>
+
+  <section class="emotion-container">
+    <button class="btn" onclick="openEmotion('sadness.html')">Sadness</button>
+    <button class="btn" onclick="openEmotion('depression.html')">Depression</button>
+    <button class="btn" onclick="openEmotion('fear.html')">Fear</button>
+    <button class="btn" onclick="openEmotion('anger.html')">Anger</button>
+    <button class="btn" onclick="openEmotion('loneliness.html')">Loneliness</button>
+    <button class="btn" onclick="openEmotion('happiness.html')">Happiness</button>
+  </section>
+
+
+<footer class="credit-footer">
+  |Quran translations used are purely from Kanzul Imaan.| <br>
+  Website designed & developed by <strong>Muntaha Siraj</strong> (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+</footer>
+
+  
+  <script>
+    function openEmotion(page) {
+      window.location.href = page;
+    }
+  </script>
+
+
+
+
+
+
+
+
+</body>
+</html>

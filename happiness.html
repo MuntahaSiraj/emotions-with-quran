@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When You're happy — What Allah Says</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Noto Naskh Arabic", serif;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      animation: slowWaves 30s infinite alternate ease-in-out;
+    }
+
+    @keyframes slowWaves {
+      0% { background-position: center center; }
+      50% { background-position: left top; }
+      100% { background-position: right bottom; }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      z-index: 2;
+      margin-bottom: 20px;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .ayah {
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      border-radius: 15px;
+      max-width: 85%;
+      line-height: 2;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      z-index: 2;
+    }
+
+    .sound-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #40dbf0, #2196f3);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: white;
+      font-size: 1rem;
+      z-index: 3;
+      transition: 0.3s;
+    }
+
+    .sound-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(45deg, #4dd8e1, #1e61f3);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: rgb(28, 26, 26);
+      font-size: 1rem;
+      z-index: 3;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <button class="back-btn" id="backBtn">⬅ Back</button>
+  
+
+  <h1>When you're Happy,</h1>
+  <h1>look at this — what Allah says....</h1>
+  <div class="ayah" id="ayahText"></div>
+
+
+
+  <script>
+    const ayahs = [
+      {
+    arabic: "قُلْ بِفَضْلِ اللّٰهِ وَ بِرَحْمَتِهٖ فَبِذٰلِكَ فَلْیَفْرَحُوْاؕ-هُوَ خَیْرٌ مِّمَّا یَجْمَعُوْنَ(58)",
+    urdu: "تم فرماؤ اللہ ہی کے فضل اور اسی کی رحمت اور اسی پر چاہئے کہ خوشی کریں وہ ان کے سب دھن دولت سے بہتر ہے۔ (کنزالایمان)"
+  },
+  {
+    arabic: "مَنْ عَمِلَ صَالِحًا مِّنْ ذَكَرٍ اَوْ اُنْثٰى وَ هُوَ مُؤْمِنٌ فَلَنُحْیِیَنَّهٗ حَیٰوةً طَیِّبَةًۚ-وَ لَنَجْزِیَنَّهُمْ اَجْرَهُمْ بِاَحْسَنِ مَا كَانُوْا یَعْمَلُوْنَ(97)",
+    urdu: "جو اچھا کام کرے مرد ہو یا عورت اور ہو مسلمان تو ضرور ہم اسے اچھی زندگی جِلائیں گے اور ضرور انہیں ان کا نیگ دیں گے جو ان کے سب سے بہتر کام کے لائق ہو۔ (کنزالایمان)"
+  },
+  {
+    arabic: "وَ اَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ(11)",
+    urdu: "اور اپنے رب کی نعمت کا خوب چرچا کرو۔ (کنزالایمان)"
+  },
+  {
+    arabic: "هُوَ الَّذِیْۤ اَنْزَلَ السَّكِیْنَةَ فِیْ قُلُوْبِ الْمُؤْمِنِیْنَ لِیَزْدَادُوْۤا اِیْمَانًا مَّعَ اِیْمَانِهِمْؕ-وَلِلّٰهِ جُنُوْدُ السَّمٰوٰتِ وَ الْاَرْضِؕ-وَ كَانَ اللّٰهُ عَلِیْمًا حَكِیْمًا(4)",
+    urdu: "وہی ہے جس نے ایمان والوں کے دلوں میں اطمینان اُتارا تاکہ اُنہیں یقین پر یقین بڑھے اور اللہ ہی کی مِلک ہیں تمام لشکر آسمانوں اور زمین کے اور اللہ علم و حکمت والا ہے۔ (کنزالایمان)"
+  },
+  {
+    arabic: "فَاذْكُرُوْنِیْۤ اَذْكُرْكُمْ وَ اشْكُرُوْا لِیْ وَ لَا تَكْفُرُوْنِ(152)",
+    urdu: "تو میری یاد کرو میں تمہارا چرچا کروں گا اور میرا حق مانو اور میری ناشکری نہ کرو۔ (کنزالایمان)"
+  },
+  {
+    arabic: "اِنَّ مَعَ الْعُسْرِ یُسْرًاﭤ(6)",
+    urdu: "بیشک دشواری کے ساتھ اور آسانی ہے۔ (کنزالایمان)"
+  },
+  {
+    arabic: "وَ اِذْ تَاَذَّنَ رَبُّكُمْ لَىٕنْ شَكَرْتُمْ لَاَزِیْدَنَّكُمْ وَ لَىٕنْ كَفَرْتُمْ اِنَّ عَذَابِیْ لَشَدِیْدٌ(7)-وَ قَالَ مُوْسٰۤى اِنْ تَكْفُرُوْۤا اَنْتُمْ وَ مَنْ فِی الْاَرْضِ جَمِیْعًاۙ-فَاِنَّ اللّٰهَ لَغَنِیٌّ حَمِیْدٌ(8)",
+    urdu: "اور یاد کرو جب تمہارے رب نے سنادیا کہ اگر احسان مانو گے تو میں تمہیں اور دوں گا اور اگر ناشکری کرو تو میرا عذاب سخت ہے۔ اور موسیٰ نے کہا اگر تم اور زمین میں جتنے ہیں سب کا فر ہوجاؤ تو بیشک اللہ بے پرواہ سب خوبیوں والا ہے۔ (کنزالایمان)"
+  },
+  {
+    arabic: "وَ الْاَرْضَ وَ ضَعَهَا لِلْاَنَامِ(10)فِیْهَا فَاكِهَةٌ ﭪ--وَّ النَّخْلُ ذَاتُ الْاَكْمَامِ(11)وَ الْحَبُّ ذُو الْعَصْفِ وَ الرَّیْحَانُ(12)فَبِاَیِّ اٰلَآءِ رَبِّكُمَا تُكَذِّبٰنِ(13)",
+    urdu: "اور زمین رکھی مخلوق کے لیے۔ اس میں میوے اور غلاف والی کھجوریں۔ اور بُھس کے ساتھ اناج اور خوشبو کے پھول۔ تو اے جن و انس! تم دونوں اپنے رب کی کون سی نعمت جھٹلاؤ گے۔ (کنزالایمان)"
+  },
+   {
+    arabic: "اِذْ تَسْتَغِیْثُوْنَ رَبَّكُمْ فَاسْتَجَابَ لَكُمْ اَنِّیْ مُمِدُّكُمْ بِاَلْفٍ مِّنَ الْمَلٰٓىٕكَةِ مُرْدِفِیْنَ(9)وَ مَا جَعَلَهُ اللّٰهُ اِلَّا بُشْرٰى وَ لِتَطْمَىٔنَّ بِهٖ قُلُوْبُكُمْۚ-وَ مَا النَّصْرُ اِلَّا مِنْ عِنْدِ اللّٰهِؕ-اِنَّ اللّٰهَ عَزِیْزٌ حَكِیْمٌ(10)",
+    urdu: "جب تم اپنے رب سے فریاد کرتے تھے تو اس نے تمہاری سن لی کہ میں تمہیں مدد دینے والا ہوں ہزار فرشتوں کی قطار سے۔ اور یہ تو اللہ نے کیا مگر تمہاری خوشی کو اور اس لیے کہ تمہارے دل چین پائیں اور مدد نہیں مگر اللہ کی طرف سے بیشک اللہ غالب حکمت والا ہے۔ (کنزالایمان)"
+  },
+  {
+    arabic: "وَ لَقَدْ اٰتَیْنَا لُقْمٰنَ الْحِكْمَةَ اَنِ اشْكُرْ لِلّٰهِؕ-وَ مَنْ یَّشْكُرْ فَاِنَّمَا یَشْكُرُ لِنَفْسِهٖۚ-وَ مَنْ كَفَرَ فَاِنَّ اللّٰهَ غَنِیٌّ حَمِیْدٌ(12)",
+    urdu: "اور بیشک ہم نے لقمان کو حکمت عطا فرمائی کہ الله کا شکر کر اور جو شکر کرے وہ اپنے بھلے کو شکر کرتا ہے اور جو ناشکری کرے تو بیشک الله بے پروا ہے سب خوبیوں سراہا۔ (کنزالایمان)"
+  },
+  {
+    arabic: "اِنَّا خَلَقْنَا الْاِنْسَانَ مِنْ نُّطْفَةٍ اَمْشَاجٍ ﳓ نَّبْتَلِیْهِ فَجَعَلْنٰهُ سَمِیْعًۢا بَصِیْرًا(2)اِنَّا هَدَیْنٰهُ السَّبِیْلَ اِمَّا شَاكِرًا وَّ اِمَّا كَفُوْرًا(3)",
+    urdu: "بیشک ہم نے آدمی کو پیداکیا ملی ہوئی منی سے کہ اسے جانچیں تو اُسے سنتا دیکھتا کردیا ۔ بے شک ہم نے اسے راہ بتائی یا حق مانتا یا ناشکری کرتا۔ (کنزالایمان)"
+  },
+  {
+    arabic: "وَ اللّٰهُ اَخْرَجَكُمْ مِّنْۢ بُطُوْنِ اُمَّهٰتِكُمْ لَا تَعْلَمُوْنَ شَیْــٴًـاۙ-وَّ جَعَلَ لَكُمُ السَّمْعَ وَ الْاَبْصَارَ وَ الْاَفْـٕدَةَۙ-لَعَلَّكُمْ تَشْكُرُوْنَ(78)",
+    urdu: "اور اللہ نے تمہیں تمہاری ماؤں کے پیٹ سے پیدا کیا کہ کچھ نہ جانتے تھے اور تمہیں کان اور آنکھ اور دل دیئے کہ تم احسان مانو۔ (کنزالایمان)"
+  },
+  {
+    arabic: "قَالَ یٰمُوْسٰۤى اِنِّی اصْطَفَیْتُكَ عَلَى النَّاسِ بِرِسٰلٰتِیْ وَ بِكَلَامِیْ ﳲ فَخُذْ مَاۤ اٰتَیْتُكَ وَ كُنْ مِّنَ الشّٰكِرِیْنَ(144)",
+    urdu: "فرمایا اے موسیٰ میں نے تجھے لوگوں سے چن لیا اپنی رسالتوں اور اپنے کلام سے تو لے جو میں نے تجھے عطا فرمایا اور شکر والوں میں ہو۔ (کنزالایمان)"
+  },
+  {
+    arabic: "بَلِ اللّٰهَ فَاعْبُدْ وَ كُنْ مِّنَ الشّٰكِرِیْنَ(66)",
+    urdu: "بلکہ اللہ ہی کی بندگی کر اور شکر والوں سے ہو۔ (کنزالایمان)"
+  },
+  {
+    arabic: "یٰۤاَیُّهَا الَّذِیْنَ اٰمَنُوْا كُلُوْا مِنْ طَیِّبٰتِ مَا رَزَقْنٰكُمْ وَ اشْكُرُوْا لِلّٰهِ اِنْ كُنْتُمْ اِیَّاهُ تَعْبُدُوْنَ(172)",
+    urdu: "اے ایمان والو کھاؤ ہماری دی ہوئی ستھری چیزیں اور اللہ کا احسان مانو اگر تم اسی کو پوجتے ہو۔ (کنزالایمان)"
+  }
+    ];
+
+    const randomAyah = ayahs[Math.floor(Math.random() * ayahs.length)];
+    document.getElementById("ayahText").innerHTML = `
+      <div style="font-size:2rem;margin-bottom:15px;">${randomAyah.arabic}</div>
+      <div style="font-size:1.2rem;">${randomAyah.urdu}</div>
+    `;
+
+    const images = [ 
+      "happy1.jpg", "happy2.jpg", "happy3.jpg",
+      "happy4.jpg", "happy5.jpg", "happy6.jpg", "happy7.jpg"
+    ];
+
+    let bgIndex = Math.floor(Math.random() * images.length);
+    document.body.style.backgroundImage = `url(${images[bgIndex]})`;
+
+    setInterval(() => {
+      bgIndex = (bgIndex + 1) % images.length;
+      document.body.style.backgroundImage = `url(${images[bgIndex]})`;
+    }, 10000);
+
+   
+    document.getElementById("backBtn").addEventListener("click", () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

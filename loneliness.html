@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When You're happy — What Allah Says</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Noto Naskh Arabic", serif;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      animation: slowWaves 30s infinite alternate ease-in-out;
+    }
+
+    @keyframes slowWaves {
+      0% { background-position: center center; }
+      50% { background-position: left top; }
+      100% { background-position: right bottom; }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      z-index: 2;
+      margin-bottom: 20px;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .ayah {
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      border-radius: 15px;
+      max-width: 85%;
+      line-height: 2;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      z-index: 2;
+    }
+
+    .sound-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #40dbf0, #2196f3);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: white;
+      font-size: 1rem;
+      z-index: 3;
+      transition: 0.3s;
+    }
+
+    .sound-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(45deg, #4dd8e1, #1e61f3);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      color: rgb(28, 26, 26);
+      font-size: 1rem;
+      z-index: 3;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <button class="back-btn" id="backBtn">⬅ Back</button>
+  
+
+  <h1>When you're Happy,</h1>
+  <h1>look at this — what Allah says....</h1>
+  <div class="ayah" id="ayahText"></div>
+
+
+
+  <script>
+    const ayahs = [
+     {
+     arabic: "قَالَ لَا تَخَافَاۤ اِنَّنِیْ مَعَكُمَاۤ اَسْمَعُ وَ اَرٰى(46)",
+    urdu: "فرمایا ڈرو نہیں میں تمہارے ساتھ ہوں سنتا اور دیکھتا۔"
+  },
+  {
+   arabic: "وَهُوَ مَعَكُمْ اَيْنَ مَا كُنْتُمْؕ-",
+    urdu: "اور وہ تمہارے ساتھ ہے تم کہیں ہو اور اللہ تمہارے کام دیکھ رہا ہے۔"
+  },
+  {
+     arabic: "وَاِذَا سَاَلَكَ عِبَادِیْ عَنِّیْ فَاِنِّیْ قَرِیْبٌؕ-اُجِیْبُ دَعْوَةَ الدَّاعِ اِذَا دَعَانِۙ-فَلْیَسْتَجِیْبُوْا لِیْ وَ لْیُؤْمِنُوْا بِیْ لَعَلَّهُمْ یَرْشُدُوْنَ(186)",
+    urdu: "اور اے محبوب جب تم سے میرے بندے مجھے پوچھیں تو میں نزدیک ہوں دعا قبول کرتا ہوں پکارنے والے کی جب مجھے پکارے تو انہیں چاہئے میرا حکم مانیں اور مجھ پر ایمان لائیں کہ کہیں راہ پائیں۔"
+  },
+  {
+     arabic: "لَا تَحْزَنْ ۖ إِنَّ اللّٰهَ مَعَنَا (9:40)",
+    urdu: "غم نہ کھا بیشک اللہ ہمارے ساتھ ہے۔"
+  },
+  {
+     arabic: "اَلَّذِیْنَ اٰمَنُوْا وَ تَطْمَىٕنُّ قُلُوْبُهُمْ بِذِكْرِ اللّٰهِؕ-اَلَا بِذِكْرِ اللّٰهِ تَطْمَىٕنُّ الْقُلُوْبُﭤ(28)",
+    urdu: "وہ جو ایمان لائے اور ان کے دل اللہ کی یاد سے چین پاتے ہیں سن لو اللہ کی یاد ہی میں دلوں کا چین ہے۔"
+  },
+  {
+     arabic: "وَ لَقَدْ خَلَقْنَا الْاِنْسَانَ وَ نَعْلَمُ مَا تُوَسْوِسُ بِهٖ نَفْسُهٗ ۚۖ-وَ نَحْنُ اَقْرَبُ اِلَیْهِ مِنْ حَبْلِ الْوَرِیْدِ(16)",
+    urdu: "اور بیشک ہم نے آدمی کو پیدا کیا اور ہم جانتے ہیں جو وسوسہ اس کا نفس ڈالتا ہے اور ہم دل کی رگ سے بھی اس سے زیادہ نزدیک ہیں۔"
+  },
+  {
+     arabic: "اِنَّ مَعِیَ رَبِّیْ سَیَهْدِیْنِ(62)",
+    urdu: "بیشک میرے ساتھ میرا رب ہے وہ ابھی مجھے راستہ دکھا دے گا۔"
+  },
+  {
+     arabic: "اَلَیْسَ اللّٰهُ بِكَافٍ عَبْدَهٗؕ-",
+    urdu: "کیا اللہ اپنے بندے کو کافی نہیں؟"
+  },
+  {
+     arabic: "وَ مَنْ یَّتَوَكَّلْ عَلَى اللّٰهِ فَهُوَ حَسْبُهٗؕ-",
+    urdu: "اور جو اللہ پر بھروسہ کرے تو وہ اُسے کافی ہے۔"
+  }
+    ];
+
+    const randomAyah = ayahs[Math.floor(Math.random() * ayahs.length)];
+    document.getElementById("ayahText").innerHTML = `
+      <div style="font-size:2rem;margin-bottom:15px;">${randomAyah.arabic}</div>
+      <div style="font-size:1.2rem;">${randomAyah.urdu}</div>
+    `;
+
+    const images = [ 
+      "alone.jpg","alone1.jpg","alone3.jpg","alone4.jpg","alone5.jpg","alone6.jpg"
+    ];
+
+    let bgIndex = Math.floor(Math.random() * images.length);
+    document.body.style.backgroundImage = `url(${images[bgIndex]})`;
+
+    setInterval(() => {
+      bgIndex = (bgIndex + 1) % images.length;
+      document.body.style.backgroundImage = `url(${images[bgIndex]})`;
+    }, 10000);
+
+   
+    document.getElementById("backBtn").addEventListener("click", () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>
